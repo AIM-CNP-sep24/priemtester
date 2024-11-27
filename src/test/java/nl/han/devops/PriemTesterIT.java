@@ -1,5 +1,9 @@
 package nl.han.devops;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -33,15 +37,13 @@ public class PriemTesterIT {
     void setup() {
         // Arrange.
         // Mocking the service.
-        inputPriem = "7";
-        inputNonPriem = "4";
-        var inputPriemInt = Integer.valueOf(inputPriem);
-        var inputNonPriemInt = Integer.valueOf(inputNonPriem);
+        inputPriem = mapJsonFromObject(new NumberRequest("7"));
+        inputNonPriem = mapJsonFromObject(new NumberRequest("4"));
 
         // thenReturn werkt niet voor primitive return type als boolean, want daar kun je geen methodes op aanroepe
         // when(priemService.isPriemgetal(inputNonPriemInt).thenReturn(true));
         // Dus dan gebruik je doAnswer variant van Mockito, waarbij je het omdraait met gebruik van lambda expressie hierbij.
-        doAnswer(invocation -> true).when(priemService).isPriemgetal(inputPriemInt);
+        doAnswer(invocation -> true).when(priemService).isPriemgetal(7);
         when(priemService.isPriemgetal(4)).thenReturn(false);
     }
 
@@ -118,5 +120,24 @@ public class PriemTesterIT {
         mockMvc.perform(get("/priem"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Hello, world!"));
+    }
+
+    private String mapJsonFromObject(final NumberRequest numberRequest)
+    {
+        String requestJson = "";
+
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
+        ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
+
+        try
+        {
+            requestJson = ow.writeValueAsString(numberRequest);
+        } catch (JsonProcessingException e)
+        {
+            e.printStackTrace();
+        }
+
+        return requestJson;
     }
 }

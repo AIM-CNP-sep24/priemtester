@@ -15,11 +15,11 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
       # Stel Java in (met Maven ondersteuning)
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
-          distribution: 'oracle' # Kies de gewenste distributie
+          java-version: '21'
+          distribution: 'corretto' # Kies de gewenste distributie
           # Cache Maven-artefacten voor snellere builds
           cache: 'maven'
 

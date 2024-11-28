@@ -1,6 +1,6 @@
 name: Java and Node.js
 build:
-  dockerfile: Dockerfile_build
+  dockerComposeFile: ../docker-compose.yaml
   context: ..
 settings:
   terminal.integrated.shell.linux: /bin/bash

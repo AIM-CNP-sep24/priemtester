@@ -1,0 +1,15 @@
+name: Java and Node.js
+build:
+  dockerfile: Dockerfile_build
+  context: ..
+settings:
+  terminal.integrated.shell.linux: /bin/bash
+extensions:
+  - vscjava.vscode-java-pack
+  - dbaeumer.vscode-eslint
+  - esbenp.prettier-vscode
+postCreateCommand: mvn clean install && npm install --prefix priemtester-ui
+forwardPorts:
+  - 8080
+  - 3000
+remoteUser: vscode

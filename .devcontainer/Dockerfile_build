@@ -1,0 +1,47 @@
+# Use the official Maven image as a parent image
+FROM maven:3.8.6-openjdk-21-slim AS build
+
+# Set the working directory
+WORKDIR /workspace
+
+# Copy the pom.xml and install dependencies
+COPY pom.xml .
+RUN mvn dependency:go-offline
+
+# Copy the rest of the application code
+COPY src ./src
+
+# Build the application
+RUN mvn clean install
+
+# Use the official Node.js image as a parent image
+FROM node:21 AS frontend
+
+# Set the working directory
+WORKDIR /workspace/priemtester-ui
+
+# Copy the package.json and install dependencies
+COPY priemtester-ui/package.json priemtester-ui/package-lock.json ./
+RUN npm install
+
+# Copy the rest of the frontend code
+COPY priemtester-ui .
+
+# Build the frontend
+RUN npm run build
+
+# Use the official OpenJDK image as a parent image
+FROM openjdk:21-jdk-slim
+
+# Set the working directory
+WORKDIR /workspace
+
+# Copy the built application and frontend
+COPY --from=build /workspace/target/*.jar ./app.jar
+COPY --from=frontend /workspace/priemtester-ui/dist ./src/main/resources/static
+
+# Expose the port the app runs on
+EXPOSE 8080
+
+# Run the application
+CMD ["java", "-jar", "app.jar"]

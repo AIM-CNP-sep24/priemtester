@@ -14,10 +14,18 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
+# .idea # only ignore user specific files not everything.
 *.iws
 *.iml
 *.ipr
+
+# User-specific stuff
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
 
 ### NetBeans ###
 /nbproject/private/

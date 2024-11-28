@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class CustomPriemServiceTest {
+class CustomPriemServiceTest {
 
 	private final PriemService priemService = new CustomPriemService();
 

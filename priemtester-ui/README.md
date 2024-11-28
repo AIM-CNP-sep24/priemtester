@@ -14,10 +14,6 @@ In de project directory `priemtester-ui`, start je de front-end in development m
 npx vite dev
 ```
 
-RUn ook de Linting tool
-```
-mvn checkstyle:check
-```
 
 Open [http://localhost:3000](http://localhost:3000) om de web app te zien (of Vite opent deze automatisch).
 
@@ -46,6 +42,11 @@ Gebruik dus niet direct zelf `vite build`. De NPM variant roept deze aan, maar k
 
 Zo kun je via de 'same origin policy' werken, omdat front-end op zelfde url en poort draait als back-end (localhost:8090)
 Voor development is er WEL een CORS setup in de back-end gemaakt (ook localhost, maar verschillende poorten 8090 en 5173).
+
+Run ook de Linting tool
+```
+mvn checkstyle:check
+```
 
 Dit lanceert de test runner in interactive watch mode.
 

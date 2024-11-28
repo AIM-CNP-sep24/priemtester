@@ -48,7 +48,7 @@ public class PriemTesterIT {
     }
 
     @Test
-    public void testCheckCorrectIfPrimeWithInteger() throws Exception {
+    void testCheckCorrectIfPrimeWithInteger() throws Exception {
         // Act.
         // Sending request with a prime number
         System.out.println("inputPriem: " + inputPriem);

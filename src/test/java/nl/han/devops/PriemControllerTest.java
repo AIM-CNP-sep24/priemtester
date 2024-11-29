@@ -1,5 +1,6 @@
 package nl.han.devops;
 
+import nl.han.devops.priem.IsPriemRequest;
 import org.instancio.Instancio;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -39,7 +40,7 @@ class PriemControllerTest {
         when(mockPriemService.isPriemgetal(input)).thenReturn(expected);
 
         // Act
-        var actual = sut.checkOfPriem(new NumberRequest(input.toString()));
+        var actual = sut.checkOfPriem(new IsPriemRequest(input.toString()));
 
         // Assert
         assertThat(actual).isEqualTo(expected);

@@ -18,10 +18,18 @@ class CustomPriemServiceTest {
 
 	@ParameterizedTest
 	@ValueSource(ints = {-1, 0, 1})
-	public void isPriemgetal_waar_voor_getallen_kleiner_dan_twee(int value) {
-		boolean result = priemService.isPriemgetal(value);
+	void isPriemgetal_waar_voor_getallen_kleiner_dan_twee(int value) {
+		// Arrange.
+		var expected = new PriemResponse(
+				Integer.toString(value),
+				false,
+				new BigInteger("0"),
+				value + " is geen priemgetal, want het is kleiner dan 2."
+		);
+		// Act
+		var result = priemService.isPriemgetal(value);
 
-		Assertions.assertFalse(result, value + " zou geen priemgetal moeten zijn.");
+		Assertions.assertEquals(expected, result);
 	}
 
 	@ParameterizedTest

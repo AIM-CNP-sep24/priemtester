@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import nl.han.devops.priem.IsPriemRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -37,8 +38,8 @@ public class PriemTesterIT {
     void setup() {
         // Arrange.
         // Mocking the service.
-        inputPriem = mapJsonFromObject(new NumberRequest("7"));
-        inputNonPriem = mapJsonFromObject(new NumberRequest("4"));
+        inputPriem = mapJsonFromObject(new IsPriemRequest("7"));
+        inputNonPriem = mapJsonFromObject(new IsPriemRequest("4"));
 
         // thenReturn werkt niet voor primitive return type als boolean, want daar kun je geen methodes op aanroepe
         // when(priemService.isPriemgetal(inputNonPriemInt).thenReturn(true));
@@ -122,7 +123,7 @@ public class PriemTesterIT {
                 .andExpect(content().string("Hello, world!"));
     }
 
-    private String mapJsonFromObject(final NumberRequest numberRequest)
+    private String mapJsonFromObject(final IsPriemRequest isPriemRequest)
     {
         String requestJson = "";
 
@@ -132,7 +133,7 @@ public class PriemTesterIT {
 
         try
         {
-            requestJson = ow.writeValueAsString(numberRequest);
+            requestJson = ow.writeValueAsString(isPriemRequest);
         } catch (JsonProcessingException e)
         {
             e.printStackTrace();

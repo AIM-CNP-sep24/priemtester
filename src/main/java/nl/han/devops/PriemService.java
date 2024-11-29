@@ -1,8 +1,10 @@
 package nl.han.devops;
 
+import nl.han.devops.priem.IsPriemResponse;
+
 import java.math.BigInteger;
 
 public interface PriemService {
-    boolean isPriemgetal(int kandidaat);
-    public boolean isPriemgetal(BigInteger kandidaat);
+    public IsPriemResponse isPriemgetal(int kandidaat);
+    public IsPriemResponse isPriemgetal(BigInteger kandidaat);
 }

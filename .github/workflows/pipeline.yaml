@@ -56,4 +56,4 @@ jobs:
         run: mvn test
       - name: Run Tests
         # TODO: Uitzoeken wat batch-mode en update-snapshots doet
-        run: mvn --batch-mode --update-snapshots verify  .
+        run: mvn --batch-mode --update-snapshots verify

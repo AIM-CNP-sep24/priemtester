@@ -1,5 +1,7 @@
 package nl.han.devops;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -14,6 +16,7 @@ import java.math.BigInteger;
 // Make this a console AND a web application
 
 @SpringBootApplication
+@OpenAPIDefinition(info = @Info(title = "PriemTester API", version = "1.0", description = "Documentation PriemTester API v1.0"))
 public class PriemTesterApplication implements CommandLineRunner {
 
 	

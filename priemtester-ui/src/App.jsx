@@ -8,9 +8,10 @@ function App() {
   const priemFetchService = new PriemFetchService();
   return (
     <div className="App">
-      <header className="App-header">
-        <PriemGetalTester priemFetchService={priemFetchService} />
-      </header>
+        <header className="App-header">
+            <p>Version: {process.env.VERSION}</p>
+            <PriemGetalTester priemFetchService={priemFetchService}/>
+        </header>
     </div>
   );
 }

@@ -1,9 +1,9 @@
 export default class FetchService {
-  pollingInterval = 5000; // Poll elke 5 seconden
 
   constructor(baseUrl) {
     this.baseUrl = baseUrl;
     this.isOnline = true;
+    this.pollingInterval = 5000; // Poll elke 5 seconden
   }
 
   async fetchWithCheck(endpoint, options = {}) {

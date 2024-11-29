@@ -40,8 +40,9 @@ npm run build
 
 Gebruik dus niet direct zelf `vite build`. De NPM variant roept deze aan, maar kopieert daarna ook de gebuilde assets`public` folder naar de `resources` folder in de back-end Spring Boot MVC app. Dit via config in je `package.json` in het scripts gedeelte .
 
-Zo kun je via de 'same origin policy' werken, omdat front-end op zelfde url en poort draait als back-end (localhost:8090)
-Voor development is er WEL een CORS setup in de back-end gemaakt (ook localhost, maar verschillende poorten 8090 en 5173).
+Zo kun je via de 'same origin policy' werken, omdat front-end op zelfde url en poort draait als back-end (localhost:9000)
+
+Voor development is er WEL een CORS setup in de back-end gemaakt (ook localhost, maar verschillende poorten 9000 en 5173).
 
 Run ook de Linting tool
 ```

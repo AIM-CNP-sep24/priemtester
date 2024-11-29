@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const PriemGetalTester = ({ priemFetchService }) => {
     const [kandidaat, setKandidaat] = useState('13');
@@ -35,4 +36,9 @@ const PriemGetalTester = ({ priemFetchService }) => {
   );
 };
 
+PriemGetalTester.propTypes = {
+    priemFetchService: PropTypes.shape({
+        checkPriem: PropTypes.func.isRequired
+    }).isRequired
+};
 export default PriemGetalTester;

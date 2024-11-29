@@ -38,7 +38,7 @@ WORKDIR /workspace
 
 # Copy the built application and frontend
 COPY --from=build /workspace/target/*.jar ./app.jar
-COPY --from=frontend /workspace/priemtester-ui/dist ./src/main/resources/static
+COPY --from=frontend /workspace/priemtester-ui/dist ./src/main/resources
 
 # Expose the port the app runs on
 EXPOSE 8080

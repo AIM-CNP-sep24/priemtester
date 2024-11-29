@@ -9,7 +9,7 @@ COPY target/*.jar ./app.jar
 COPY priemtester-ui/dist ./src/main/resources/static
 
 # Expose the port the app runs on
-EXPOSE 8090
+EXPOSE 9000
 
 # Run the application
 CMD ["java", "-jar", "app.jar"]
